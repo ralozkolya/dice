@@ -31,14 +31,10 @@ function retrieveRolls() {
 
 	app.retries = app.retries || 1;
 
-	$.get('/api/random', function(data, asd) {
-		if (Array.isArray(data)) {
-			app.rolls = app.rolls.concat(data);
-			app.buttons.removeAttr('disabled');
-			app.buttons.html('Roll!');
-		} else {
-			console.error('Error retrieving rolls');
-		}
+	$.get('/api/random', function(data) {
+		app.rolls = app.rolls.concat(data);
+		app.buttons.removeAttr('disabled');
+		app.buttons.html('Roll!');
 	}).fail(function(e) {
 		setTimeout(retrieveRolls, app.retries++ * 1000);
 	});
