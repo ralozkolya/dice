@@ -10,14 +10,20 @@ function init() {
 }
 
 function roll() {
-	displayRoll([app.rolls.shift(), app.rolls.shift()]);
+
+	app.buttons.attr('disabled', 'disabled');
+
+	showFakeRolls(function () {
+
+		displayRoll([app.rolls.shift(), app.rolls.shift()]);
+
+		if (app.rolls.length) {
+			app.buttons.removeAttr('disabled');
+		}
+	});
 
 	if (app.rolls.length < 100) {
 		retrieveRolls();
-	}
-
-	if (app.rolls.length === 0) {
-		app.buttons.attr('disabled', 'disabled');
 	}
 }
 
@@ -29,13 +35,43 @@ function displayRoll(roll) {
 function retrieveRolls() {
 	app.rolls = app.rolls || [];
 
-	app.retries = app.retries || 1;
-
 	$.get('/api/random', function(data) {
 		app.rolls = app.rolls.concat(data);
 		app.buttons.removeAttr('disabled');
 		app.buttons.html('Roll!');
+		app.retries = 0;
 	}).fail(function(e) {
-		setTimeout(retrieveRolls, app.retries++ * 1000);
+		setTimeout(retrieveRolls, getTimeout());
 	});
+}
+
+function getTimeout() {
+	app.retries = app.retries || 1;
+	return Math.min(app.retries++, 10) * 1000;
+}
+
+function showFakeRolls(cb) {
+
+	var fakeRolls = getFakeRolls();
+
+	function show () {
+
+		if (fakeRolls.length) {
+			setTimeout(show, 100);
+		} else {
+			return cb();
+		}
+
+		displayRoll([fakeRolls.pop(), fakeRolls.pop()]);
+	}
+
+	setTimeout(show, 100);
+}
+
+function getFakeRolls() {
+	var rolls = [];
+	for (var i = 0; i < 16; i++) {
+		rolls.push(Math.floor(Math.random() * 6));
+	}
+	return rolls;
 }
