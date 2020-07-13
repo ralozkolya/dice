@@ -12,4 +12,5 @@ img {
 	background-image: url('../img/d.png');
 	background-size: cover;
 	background-repeat: no-repeat;
+	transition: .3s background-position;
 }
