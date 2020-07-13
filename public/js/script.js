@@ -39,7 +39,10 @@ function retrieveRolls() {
 		} else {
 			console.error('Error retrieving rolls');
 		}
+<<<<<<< HEAD
 	}).fail(function(e) {
 		setTimeout(retrieveRolls, app.retries++ * 1000);
+=======
+>>>>>>> 98f17ec39c7dd53c841031b9a6af46d3eeea06e3
 	});
 }
