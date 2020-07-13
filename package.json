@@ -1,0 +1,22 @@
+{
+  "name": "dice",
+  "version": "1.0.0",
+  "description": "Truly random dice",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ralozkolya/dice.git"
+  },
+  "dependencies": {
+    "assert": "^2.0.0",
+    "axios": "^0.19.2",
+    "sirv": "^1.0.1"
+  },
+  "devDependencies": {
+    "@vercel/node": "^1.7.2"
+  },
+  "scripts": {
+    "start": "sirv public"
+  },
+  "author": "",
+  "license": "ISC"
+}

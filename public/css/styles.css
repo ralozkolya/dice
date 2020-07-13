@@ -1,0 +1,15 @@
+h1 {
+	margin: 50px 0;
+}
+
+img {
+	max-width: 100%;
+}
+
+.dice {
+	width: 100%;
+	padding-bottom: 100%;
+	background-image: url('../img/d.png');
+	background-size: cover;
+	background-repeat: no-repeat;
+}
