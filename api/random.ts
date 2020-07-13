@@ -42,5 +42,5 @@ async function getNumbers(): Promise<number[]> {
     }
 
     // Fallback. Not truly random :(
-    return new Random().dice(6, 1000);
+    return new Random().dice(6, 1000).map(i => --i);
 }
