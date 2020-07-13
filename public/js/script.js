@@ -1,5 +1,3 @@
-$(init);
-
 var app = {};
 
 function init() {
@@ -75,3 +73,5 @@ function getFakeRolls() {
 	}
 	return rolls;
 }
+
+init();

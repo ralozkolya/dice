@@ -9,6 +9,7 @@
   "dependencies": {
     "assert": "^2.0.0",
     "axios": "^0.19.2",
+    "random-js": "^2.1.0",
     "sirv": "^1.0.1"
   },
   "devDependencies": {
