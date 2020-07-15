@@ -4,7 +4,7 @@ import axios from 'axios';
 export async function getRolls(sides = 6, retries = 1): Promise<number[]> {
 
     try {
-        const response = await axios.get('http://localhost:3000/api/random', { params: { sides } });
+        const response = await axios.get('/api/random', { params: { sides } });
         return response.data;
     } catch (e) {
         retries = Math.min(20, retries);
