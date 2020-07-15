@@ -2,6 +2,7 @@ import React from 'react';
 import { debounce } from 'lodash';
 import Bluebird from 'bluebird';
 import './App.css';
+import github from '../../assets/GitHub-Mark-32px.png';
 
 import Die from '../Die/Die';
 import NumericInput from '../NumericInput/NumericInput';
@@ -55,7 +56,7 @@ export default class App extends React.Component<unknown, IAppState> {
   getRollButton = (): JSX.Element => {
     return (
       <button
-        className="btn btn-primary btn-block btn-lg roll-btn font-weight-bold"
+        className="btn btn-primary btn-block btn-lg roll-btn font-weight-bold mb-3"
         disabled={this.state.loading || this.state.rolling}
         onClick={this.roll}>
         {this.state.loading ? 'Loading...' : this.state.rolling ? 'Rolling...' : 'Roll!'}
@@ -86,7 +87,7 @@ export default class App extends React.Component<unknown, IAppState> {
 
   render(): JSX.Element {
 
-    const className = `${this.state.diceCount < 3 ? 'col-6' : 'col-4'} col-lg-6 my-3`;
+    const className = `${this.state.diceCount < 3 ? 'col-6' : 'col-4'} col-lg-6 col-xl-4 my-3`;
 
     return (
       <div className="container">
@@ -117,9 +118,14 @@ export default class App extends React.Component<unknown, IAppState> {
             {this.getRollButton()}
             {
               this.state.warning
-            ? <div className="alert alert-warning mt-3">{this.state.warning}</div>
+            ? <div className="alert alert-warning">{this.state.warning}</div>
                 : null
             }
+            <div className="text-center">
+              <a className="text-decoration-none text-secondary" href="https://github.com/ralozkolya/dice" target="_blank" rel="noopener noreferrer">
+                <img className="mr-2" src={github} alt="GitHub"/>Source
+              </a>
+            </div>
           </div>
         </div>
       </div>
