@@ -7,6 +7,11 @@ const { API_KEY: apiKey, NODE_ENV } = process.env;
 
 export default async (request: NowRequest, response: NowResponse) => {
 
+<<<<<<< HEAD
+=======
+    console.log(request.cookies.random);
+
+>>>>>>> 865acf3b217325865410b34101e4afd99b6c063e
     if (request.cookies.random) {
         return response.status(429).send({ error: 'Too many requests' });
     }
@@ -25,6 +30,10 @@ export default async (request: NowRequest, response: NowResponse) => {
 async function getNumbers(sides: number): Promise<number[]> {
 
     try {
+<<<<<<< HEAD
+=======
+        assert(apiKey, 'API_KEY environmental variable is required');
+>>>>>>> 865acf3b217325865410b34101e4afd99b6c063e
         assert(sides > 1 && sides < 21, "'sides' must be an integer between 2 and 20");
     } catch (e) {
         e.status = 422;
@@ -33,8 +42,11 @@ async function getNumbers(sides: number): Promise<number[]> {
 
     if (NODE_ENV === 'production') {
 
+<<<<<<< HEAD
         assert(apiKey, 'API_KEY environmental variable is required in production');
 
+=======
+>>>>>>> 865acf3b217325865410b34101e4afd99b6c063e
         try {
             const response = await axios.post('https://api.random.org/json-rpc/1/invoke', {
                 jsonrpc: '2.0',

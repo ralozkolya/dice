@@ -1,0 +1,20 @@
+h1 {
+	margin: 50px 0;
+}
+
+img {
+	max-width: 100%;
+}
+
+.roll-btn {
+	font-weight: bold;
+}
+
+.dice {
+	width: 100%;
+	padding-bottom: 100%;
+	background-image: url('../img/dice.svg');
+	background-size: 400% 500%;
+	background-repeat: no-repeat;
+	transition: .3s background-position;
+}
