@@ -15,6 +15,7 @@ interface IAppState {
   rolling: boolean;
   rolls: number[];
   currentRolls: number[];
+  warning?: string | null;
 }
 
 export default class App extends React.Component<unknown, IAppState> {
@@ -25,7 +26,8 @@ export default class App extends React.Component<unknown, IAppState> {
     loading: true,
     rolling: false,
     rolls: [],
-    currentRolls: []
+    currentRolls: [],
+    warning: null
   };
 
   componentDidMount = (): void => {
@@ -34,8 +36,8 @@ export default class App extends React.Component<unknown, IAppState> {
 
   getRolls = async (): Promise<void> => {
     this.setState({ loading: true });
-    const rolls = await getRolls(this.state.sideCount);
-    this.setState({ loading: false, rolls });
+    const response = await getRolls(this.state.sideCount);
+    this.setState({ loading: false, rolls: response.data, warning: response.warning });
   };
 
   getRollsDebounced = debounce(this.getRolls, 1000);
@@ -53,7 +55,7 @@ export default class App extends React.Component<unknown, IAppState> {
   getRollButton = (): JSX.Element => {
     return (
       <button
-        className="btn btn-primary btn-block btn-lg roll-btn"
+        className="btn btn-primary btn-block btn-lg roll-btn font-weight-bold"
         disabled={this.state.loading || this.state.rolling}
         onClick={this.roll}>
         {this.state.loading ? 'Loading...' : this.state.rolling ? 'Rolling...' : 'Roll!'}
@@ -72,7 +74,7 @@ export default class App extends React.Component<unknown, IAppState> {
 
     const fakeRolls = getFakeRolls(this.state.sideCount, this.state.diceCount);
 
-    while(fakeRolls.length) {
+    while (fakeRolls.length) {
       const currentRolls = fakeRolls.splice(0, this.state.diceCount);
       this.setState({ currentRolls });
       await Bluebird.delay(70);
@@ -113,6 +115,11 @@ export default class App extends React.Component<unknown, IAppState> {
               onValueChange={diceCount => this.setState({ diceCount })} />
 
             {this.getRollButton()}
+            {
+              this.state.warning
+            ? <div className="alert alert-warning mt-3">{this.state.warning}</div>
+                : null
+            }
           </div>
         </div>
       </div>

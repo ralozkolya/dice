@@ -22,7 +22,7 @@ export default async (request: NowRequest, response: NowResponse) => {
     }
 }
 
-async function getNumbers(sides: number): Promise<number[]> {
+async function getNumbers(sides: number): Promise<{ data: number[]; warning?: string | undefined }> {
 
     try {
         assert(sides > 1 && sides < 21, "'sides' must be an integer between 2 and 20");
@@ -49,7 +49,7 @@ async function getNumbers(sides: number): Promise<number[]> {
             });
     
             if (response.data.result) {
-                return response.data.result.random.data;
+                return { data: response.data.result.random.data };
             }
 
             throw Error(response.data.error);
@@ -62,5 +62,6 @@ async function getNumbers(sides: number): Promise<number[]> {
     }
 
     // Fallback. Not truly random :(
-    return new Random().dice(sides, 1000).map(i => --i);
+    const data = new Random().dice(sides, 1000).map(i => --i);
+    return { data, warning: 'Unable to retrieve data from random.org. Falling back to PRNG' };
 }
