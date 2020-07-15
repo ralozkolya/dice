@@ -123,7 +123,10 @@ export default class App extends React.Component<unknown, IAppState> {
             }
             <div className="text-center">
               <a className="text-decoration-none text-secondary" href="https://github.com/ralozkolya/dice" target="_blank" rel="noopener noreferrer">
-                <img className="mr-2" src={github} alt="GitHub"/>Source
+                <img className="sm-logo mr-2" src={github} alt="GitHub"/>Source
+              </a>
+              <a className="ml-3 text-decoration-none text-secondary" href="https://random.org" target="_blank" rel="noopener noreferrer">
+                Powered by https://random.org
               </a>
             </div>
           </div>
