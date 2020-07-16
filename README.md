@@ -4,4 +4,4 @@ This webpage uses [Random.org API](https://random.org) to display truly random d
 
 Demo: [https://random-dice.online/](https://random-dice.online/)
 
-Built with [https://reactjs.org/](React)
+Built with [React](https://reactjs.org/)
