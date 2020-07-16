@@ -1,3 +1,7 @@
 .sm-logo {
-    height: 20px;
+    height: 1.2em;
+}
+
+.small {
+    font-size: .8em;
 }
