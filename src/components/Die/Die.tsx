@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Die.css';
+import dice from '../../assets/dice.svg';
 
 interface IDieProps {
   value: number;
@@ -15,7 +16,10 @@ export default class App extends Component<IDieProps> {
 
   render() {
     return (
-      <div className="die mx-auto" style={ { backgroundPosition: valueToCss(this.props.value) } }></div>
+      <div className="die mx-auto" style={ {
+        backgroundPosition: valueToCss(this.props.value),
+        backgroundImage: `url(${dice})`
+      } } />
     );
   }
 }
