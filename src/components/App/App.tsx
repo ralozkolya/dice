@@ -6,6 +6,7 @@ import github from '../../assets/GitHub-Mark-32px.png';
 
 import Die from '../Die/Die';
 import NumericInput from '../NumericInput/NumericInput';
+import Wake from '../Wake/Wake';
 
 import { getRolls, getFakeRolls } from '../../services/api';
 
@@ -116,14 +117,17 @@ export default class App extends React.Component<unknown, IAppState> {
               onValueChange={diceCount => this.setState({ diceCount })} />
 
             {this.getRollButton()}
+
+            <Wake />
+
             {
               this.state.warning
-            ? <div className="alert alert-warning">{this.state.warning}</div>
+                ? <div className="alert alert-warning">{this.state.warning}</div>
                 : null
             }
             <div className="text-center mt-5 small">
               <a className="text-decoration-none text-secondary" href="https://github.com/ralozkolya/dice" target="_blank" rel="noopener noreferrer">
-                <img className="sm-logo mr-2" src={github} alt="GitHub"/>Source
+                <img className="sm-logo mr-2" src={github} alt="GitHub" />Source
               </a>
               <a className="ml-3 text-decoration-none text-secondary" href="https://random.org" target="_blank" rel="noopener noreferrer">
                 Powered by https://random.org
