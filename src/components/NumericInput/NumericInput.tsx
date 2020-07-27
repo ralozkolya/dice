@@ -23,8 +23,9 @@ export default class NumericInput extends Component<INumericInputProps> {
     };
 
     render() {
+        const id = this.props.label.toLowerCase();
         return (
-            <div className="form-group" id="sides-container">
+            <div className="form-group" id={ `${id}-container` }>
                 <label className="font-weight-bold" htmlFor="sides">{this.capitalize(this.props.label)}</label>
                 <div className="input-group">
                     <div className="input-group-prepend">
@@ -33,7 +34,7 @@ export default class NumericInput extends Component<INumericInputProps> {
                             className="btn btn-outline-secondary"><img src={dash} alt="Minus" /></button>
                     </div>
                     <input
-                        id="sides"
+                        id={id}
                         type="text"
                         className="form-control text-center"
                         value={this.props.value}
