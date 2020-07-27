@@ -26,7 +26,11 @@ export default class Wake extends Component<unknown, IWakeState> {
     };
 
     setNoSleep = (enable: boolean): void => {
-        enable ? noSleep.enable() : noSleep.disable();
+        try {
+            enable ? noSleep.enable() : noSleep.disable();
+        } catch (e) {
+            // Just trying to disable non-enabled lock, fine to ignore
+        }
     };
 
     render() {
