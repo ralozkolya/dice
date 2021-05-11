@@ -14,7 +14,7 @@
         "bluebird": "^3.7.2",
         "bootstrap": "^4.5.0",
         "bootstrap-icons": "^1.0.0-alpha5",
-        "lodash": "^4.17.19",
+        "lodash": "^4.17.21",
         "nosleep.js": "^0.11.0",
         "random-js": "^2.1.0",
         "react": "^16.13.1",
