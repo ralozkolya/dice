@@ -6,6 +6,8 @@ import Input from "./input";
 import Dice from "./dice";
 import RollButton from "./roll-button";
 import { getRandomRolls } from "./random";
+import Image from "next/image";
+import githubSrc from "@/assets/github.svg";
 
 export default function Home() {
   const [sides, setSides] = useState(6);
@@ -34,6 +36,15 @@ export default function Home() {
               </div>
             </div>
             <RollButton />
+            <a
+              href="https://github.com/ralozkolya/dice"
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-2 text-xs text-gray-600"
+            >
+              <Image width={14} height={14} src={githubSrc.src} alt="Github" />
+              Source
+            </a>
           </div>
         </main>
       </RollsContext.Provider>
