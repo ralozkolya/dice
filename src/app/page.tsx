@@ -28,12 +28,15 @@ export default function Home() {
           <div className="col-span-2 flex flex-col gap-8">
             <div className="flex gap-4">
               <div className="grow">
-                <h2 className="mb-2 font-bold">Sides</h2>
-                <Input value={sides} setValue={setSides} />
+                <Input value={sides} setValue={setSides} label="Sides" />
               </div>
               <div className="grow">
-                <h2 className="mb-2 font-bold">Dice</h2>
-                <Input value={rolls.length} setValue={onDiceChange} max={9} />
+                <Input
+                  value={rolls.length}
+                  setValue={onDiceChange}
+                  max={9}
+                  label="Dice"
+                />
               </div>
             </div>
             <RollButton />

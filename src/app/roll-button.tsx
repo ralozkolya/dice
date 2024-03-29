@@ -22,7 +22,7 @@ export default function RollButton() {
 
   return (
     <button
-      className="rounded-md bg-blue-500 p-2 text-white transition-colors duration-200 hover:bg-blue-400 disabled:bg-blue-200"
+      className="rounded-md bg-blue-600 p-2 text-white transition-colors duration-300 hover:bg-blue-500 disabled:bg-blue-300"
       onClick={roll}
       disabled={isRolling}
     >
