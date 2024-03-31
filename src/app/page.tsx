@@ -12,7 +12,7 @@ import Wake from "./wake";
 
 export default function Home() {
   const [sides, setSides] = useState(6);
-  const [rolls, setRolls] = useState([0, 2]);
+  const [rolls, setRolls] = useState([1, 3]);
 
   const onDiceChange = (count: number) => {
     setRolls(getRandomRolls(count, sides));
@@ -22,7 +22,7 @@ export default function Home() {
     <SideCountContext.Provider value={{ sides, setSides }}>
       <RollsContext.Provider value={{ rolls, setRolls }}>
         <main className="container mx-auto grid grid-cols-2 gap-4 p-4 md:grid-cols-5 xl:max-w-[1024px]">
-          <div className="col-span-2 flex gap-4 md:col-span-3">
+          <div className="col-span-2 md:col-span-3">
             <Dice />
           </div>
           <div className="col-span-2 flex flex-col gap-8">

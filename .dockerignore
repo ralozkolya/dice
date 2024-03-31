@@ -1,0 +1,5 @@
+Dockerfile
+next.config.mjs
+next-env.d.ts
+node_modules
+README.md

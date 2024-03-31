@@ -1,12 +1,8 @@
-import diceSrc from "@/assets/dice.svg";
+import { Handjet } from "next/font/google";
 import { useContext } from "react";
 import { RollsContext } from "./contexts";
 
-function valueToCss(value: number): string {
-  const x = ((value % 4) / 3) * 100;
-  const y = (Math.floor(value / 4) / 4) * 100;
-  return `${x}% ${y}%`;
-}
+const handJet = Handjet({ subsets: ["latin"] });
 
 function gridCols(count: number) {
   switch (count) {
@@ -25,15 +21,22 @@ interface DieProps {
 
 function Die({ number }: DieProps) {
   return (
-    <div
-      className="col-span-1 aspect-square"
-      style={{
-        backgroundPosition: valueToCss(number),
-        backgroundImage: `url(${diceSrc.src})`,
-        backgroundSize: "400% 500%",
-        backgroundRepeat: "no-repeat",
-      }}
-    />
+    <svg
+      height="100%"
+      width="100%"
+      viewBox="0 0 20 20"
+      className="rounded-xl border-4 border-black"
+    >
+      <text
+        x="50%"
+        y="11.5"
+        textAnchor="middle"
+        dominantBaseline="middle"
+        className={`${handJet.className} text-[14px]`}
+      >
+        {number}
+      </text>
+    </svg>
   );
 }
 
@@ -41,7 +44,7 @@ export default function Dice() {
   const { rolls } = useContext(RollsContext);
 
   return (
-    <div className={`grid grow justify-center gap-4 ${gridCols(rolls.length)}`}>
+    <div className={`grid gap-4 ${gridCols(rolls.length)}`}>
       {rolls.map((roll, i) => (
         <Die number={roll} key={i} />
       ))}
